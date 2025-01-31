@@ -1,14 +1,19 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Migration.Net_6_8_BlazorServer.Net_6;
+using Migration.Net_6_8_BlazorServer.Net_6.Components;
 using Migration.Net_6_8_BlazorServer.Net_6.Data;
+using Migration.Net_6_8_BlazorServer.Net_6.Pages;
 using Syncfusion.Blazor;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+
+
+
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSyncfusionBlazor();
 
@@ -25,10 +30,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.UseAntiforgery();
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
-app.UseRouting();
-
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
 
 app.Run();
