@@ -7,4 +7,8 @@
     <RootNamespace>Migration.Net_6_8_BlazorServer.Net_6</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Blazor" Version="28.2.3" />
+  </ItemGroup>
+
 </Project>

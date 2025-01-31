@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Components.Web;
 using Migration.Net_6_8_BlazorServer.Net_6;
 using Migration.Net_6_8_BlazorServer.Net_6.Data;
 using Migration.Net_6_8_BlazorServer.Net_6.Pages;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddSyncfusionBlazor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
